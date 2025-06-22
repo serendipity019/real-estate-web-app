@@ -1,0 +1,17 @@
+# React (frontend)
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# Java (backend)
+backend/build/
+backend/.gradle/
+backend/.idea/
+backend/*.iml
+backend/out/
+backend/.env
+
+# General
+*.log
+.DS_Store
+.env
