@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router'
 import HomePage from './pages/HomePage'
 import NotFoundPage from './pages/NotFoundPage'
 import Footer from './components/layout/Footer'
+import TermsOfUseEn from './pages/en/TermsOfUse'
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path='*' element={<NotFoundPage/>} />
             <Route path='footer' element={<Footer/>} />
+            <Route path='Terms' element={<TermsOfUseEn/>} />
           </Routes>
       </BrowserRouter>
         

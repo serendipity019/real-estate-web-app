@@ -1,5 +1,6 @@
 import BlBglogo from "../logo/BlBgLogo";
 import {MapPin, Phone, Smartphone, Facebook, Instagram} from 'lucide-react';
+import {Link} from "react-router-dom";
 const currentYear: number = new Date().getFullYear();
 
 const Footer = () => { 
@@ -25,17 +26,20 @@ const Footer = () => {
                             </span>
                         </div>
                     </div>
-                    <div className="mt-12">
-                        <div className="flex gap-4">
-                            <span> <Facebook/> 
-                            <a href= "https://www.facebook.com/" className="text-gray-300 hover:text-gray-800 ml-2"></a>
+                    <div className="mt-12 mr-4">
+                        <div className="flex gap-4 pl-20">
+                            <span> 
+                            <a href= "https://www.facebook.com/" className="text-gray-300 hover:text-gray-800 ml-2"><Facebook/> </a>
                             </span>
-                            <span> <Instagram/> 
-                                <a href= "https://www.instagram.com/" className="text-gray-300 hover:text-gray-800 ml-2"></a>
+                            <span> 
+                                <a href= "https://www.instagram.com/" className="text-gray-300 hover:text-gray-800 ml-2"><Instagram/> </a>
                             </span>
                         </div>
-                        <div><span className="text-gray-300">Terms of use and privacy policy</span></div>
-                    </div>
+                        <div className="mt-8 ">
+                            <span className="text-gray-300">
+                            < Link to="../../pages/gr/TermsOfUse">Terms of use and privacy policy</Link>
+                            </span></div>                        
+                        </div>
                 </div>
                 <div className="bg-re-dark text-center text-gray-300 py-4" >
                     Copyright © {currentYear} by Papapanagiotou Real Estate - Powered by <span className="text-white">Papapanagiotou Panagiotis</span>. All rights reserved.
