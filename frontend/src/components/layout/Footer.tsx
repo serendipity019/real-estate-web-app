@@ -26,9 +26,10 @@ const Footer = () => {
                             </span>
                         </div>
                     </div>
-                    <div className="mt-12 mr-4">
-                        <div className="flex gap-4 pl-20">
-                            <span> 
+                    <div className="mt-12 mr-4">                        
+                        <div className="flex gap-4 pl-16">
+                            <span className="text-medium text-gray-600 font-semibold mt-6 -ml-10">Social media:</span>
+                            <span className="-ml-4"> 
                             <a href= "https://www.facebook.com/" className="text-gray-300 hover:text-gray-800 ml-2"><Facebook/> </a>
                             </span>
                             <span> 
