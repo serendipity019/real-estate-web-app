@@ -1,12 +1,12 @@
 import BlBglogo from "../logo/BlBgLogo";
-import {MapPin, Phone, Smartphone, Facebook, Instagram} from 'lucide-react';
+import {MapPin, Phone, Smartphone, Mail, Facebook, Instagram} from 'lucide-react';
 import {Link} from "react-router-dom";
 const currentYear: number = new Date().getFullYear();
 
 const Footer = () => { 
     return ( 
         <>
-            <footer className="">
+            <footer className="h-[200px]">
                 <div className="bg-re-light flex justify-between ">
                     <div className="items-start w-[320px] h-[240px]"><BlBglogo/></div>
                     <div className="">
@@ -16,13 +16,16 @@ const Footer = () => {
                             </span>
                         </div>
                         <div className="flex gap-2">
-                            <span className="flex mr-2 "><Phone className="text-black"/> <span className="text-gray-300 ml-2">(030)2104578126</span></span>
+                            <span className="flex mr-2 "><Phone className="text-black"/> 
+                            <a href="tel:0302104578126" className="text-gray-300 hover:text-gray-800 ml-2"> (030) 2104578126</a>
+                            </span>
                             <span className="flex"><Smartphone/>
-                            <span className="text-gray-300 ml-2"> (030) 6978706041</span></span>
+                            <a href="tel:0306978706041" className="text-gray-300 hover:text-gray-800 ml-2"> (030) 6978706041</a>
+                            </span>
                         </div>
                         <div className="my-8">
-                            <span className="flex"><MapPin/>
-                            <a href= "serendipitya137@aueb.gr" className="text-gray-300 hover:text-gray-800 ml-2">serendipitya137@aueb.gr</a>
+                            <span className="flex"><Mail/>
+                            <a href= "email: serendipitya137@aueb.gr" className="text-gray-300 hover:text-gray-800 ml-2">serendipitya137@aueb.gr</a>
                             </span>
                         </div>
                     </div>
