@@ -17,7 +17,9 @@ const AboutUsEn = () => {
                     <p className="mt-2">We provide property management, appraisal, and renovation services. Furthermore, we collaborate with specialized professionals (notaries, lawyers, engineers, architects), ensuring your interests are protected in the best possible way. </p>
                     <p className="mt-2">We listen to your needs and desires, work methodically, and together with our partners, ensure that as our client, you will receive high-quality services that fully cover your needs. </p>
                 </div>
-                <ContactInfo/>
+                <div className="hidden md:block">
+                    <ContactInfo/>
+                </div>
             </div>
         </>
     );

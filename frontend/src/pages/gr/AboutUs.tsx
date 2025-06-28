@@ -1,4 +1,4 @@
-import ContactInfo from "@/components/layout/ContactInfo";
+import ContactInfoEl from "@/components/layout/ContactInfo";
 import LineLogo from "../../components/logo/LineLogo";
 
 const AboutUsGr = () => {
@@ -18,7 +18,9 @@ const AboutUsGr = () => {
                     <p className="mt-2">Παρέχουμε υπηρεσίες διαχείρισης, εκτίμησης και ανακαίνισης ακινήτων. Επιπλέον συνεργαζόμαστε με εξιδανικευμένους επαγγελματίες (συμβολαιογράφους, νομικούς, μηχανικούς, αρχιτέκτονες) διασφαλίζοντας με τον καλύτερο δυνατό τρόπο τα συμφέροντα σας. </p>
                     <p className="mt-2">Ακούμε τις ανάγκες και τις επιθυμίες σας, εργαζόμαστε με μεθοδικότητα και μαζί με τους συνεργάτες μας εξασφαλίζουμε ότι ως πελάτης μας θα λάβετε υπηρεσίες υψηλής ποιότητας καλύπτοντας πλήρως τις ανάγκες σας. </p>
                 </div>
-                <ContactInfo/>
+                <div className="hidden md:block">
+                    <ContactInfoEl/>
+                </div>
             </div>
         </>
     );
