@@ -6,7 +6,7 @@ import TermsOfUseEn from './pages/en/TermsOfUse'
 import ContactInfoEl from './components/layout/ContactInfoEl'
 import AboutUsEn from './pages/en/AboutUs'
 import ServicesEn from './pages/en/Services'
-
+import CustomerContactInfo from './components/forms/CustomerContactForm'
 
 function App() {
   
@@ -16,12 +16,13 @@ function App() {
       <BrowserRouter>
           <Routes>
             <Route index element={<HomePage />} />
-            <Route path='*' element={<NotFoundPage/>} />
+            <Route path="form" element={<CustomerContactInfo/>} />
             <Route path='footer' element={<Footer/>} />
             <Route path='terms' element={<TermsOfUseEn/>} />
             <Route path="contact" element={<ContactInfoEl/>} />
             <Route path="about" element={<AboutUsEn/>} />
             <Route path="services" element={<ServicesEn/>} />
+            <Route path='*' element={<NotFoundPage/>} />
           </Routes>
       </BrowserRouter>
         
