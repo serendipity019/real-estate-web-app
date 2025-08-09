@@ -6,7 +6,8 @@ import TermsOfUseEn from './pages/en/TermsOfUse'
 import ContactInfoEl from './components/layout/ContactInfoEl'
 import AboutUsEn from './pages/en/AboutUs'
 import ServicesEn from './pages/en/Services'
-import CustomerContactInfo from './components/forms/CustomerContactForm'
+import AssignForm from './components/forms/AssignForm'
+import RequestForm from './components/forms/RequestForm'
 
 function App() {
   
@@ -16,7 +17,8 @@ function App() {
       <BrowserRouter>
           <Routes>
             <Route index element={<HomePage />} />
-            <Route path="form" element={<CustomerContactInfo/>} />
+            <Route path="form-assign" element={<AssignForm/>} />
+            <Route path="form-request" element={<RequestForm/>}/>
             <Route path='footer' element={<Footer/>} />
             <Route path='terms' element={<TermsOfUseEn/>} />
             <Route path="contact" element={<ContactInfoEl/>} />
