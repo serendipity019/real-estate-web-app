@@ -1,26 +1,19 @@
 import {useForm} from "react-hook-form"
 import { Input } from "../ui/input";
 import { Select, SelectItem, SelectTrigger, SelectValue, SelectContent } from "../ui/select";
-import { type contactDetailsType, contactForm } from "../../types/ContactSchema";
+import { type contactDetailsType } from "../../types/ContactSchema";
 import { Label } from "../ui/label";
-import { zodResolver } from "@hookform/resolvers/zod";
 
 const contactOptions = ["All Day", "Morning", "Afternoon"];
 
-const CustomerContactInfo = () => {
-    
-    const { register,
-            //handleSubmit,
-            formState: {errors} } = useForm<contactDetailsType>({
-        resolver: zodResolver(contactForm),        
-        defaultValues: {
-            name: "",
-            surname: "",
-            email: "",
-            phone: "",
-            contactHours: "Afternoon"
-        }
-    });
+type Props = {
+    register: ReturnType<typeof useForm<contactDetailsType>>['register'];
+    errors: ReturnType<typeof useForm<contactDetailsType>>['formState']['errors'];
+    onContactHoursChange?: (value: string) => void;
+};
+
+const CustomerContactInfo = ({ register, errors, onContactHoursChange }: Props) => {
+    // const { register, formState: { errors } } = useFormContext<contactDetailsType>(); 
 
     return (
         <>
@@ -30,34 +23,36 @@ const CustomerContactInfo = () => {
 
                 <div>
                     <Label className="text-re-dark mb-1" htmlFor="name">Name</Label>
-                    <Input {...register("name")} placeholder="Name" />
+                    <Input {...register("name", {required: "Name is required"})} placeholder="Name" />
                     {errors.name && (
                         <p className="text-red-500 text-sm">{errors.name.message}</p>
                     )}
                 </div>
                 <div>
                     <Label className="text-re-dark mb-1" htmlFor="surname">Surname</Label>
-                    <Input {...register("surname")} placeholder="Surname" />
+                    <Input {...register("surname", {required: "Surname is required"})} placeholder="Surname" />
                     {errors.surname && (
                         <p className="text-red-500 text-sm">{errors.surname.message}</p>
                     )}
                 </div>
                 <div>
                     <Label className="text-re-dark mb-1" htmlFor="email">Email</Label>
-                    <Input {...register("email")} placeholder="Email" type="email" />
+                    <Input {...register("email", {required: "Email is required"})} placeholder="Email" type="email" />
                     {errors.email && (
                         <p className="text-red-500 text-sm">{errors.email.message}</p>
                     )}
                 </div>
                 <div>
                     <Label className="text-re-dark mb-1" htmlFor="phone">Phone</Label>
-                    <Input {...register("phone")} placeholder="Phone" />
+                    <Input {...register("phone", {required: "Phonenumber is required"})} placeholder="e.g: 0306987455174" />
                     {errors.phone && (
                         <p className="text-red-500 text-sm">{errors.phone.message}</p>
                     )}
                 </div>
                 <div>
-                    <Select {...register("contactHours")} onValueChange={(val) => console.log(val)}>
+                    {/* <Select {...register("contactHours")} onValueChange={(val) => console.log(val)}> */}
+                    <Label className="text-re-dark mb-1" htmlFor="contactHours">Contact Hours</Label>
+                    <Select onValueChange={onContactHoursChange}>
                         <SelectTrigger className="w-full">  {/* Shows the selected value */}
                             <SelectValue placeholder="Select contact hours" />
                         </SelectTrigger>
