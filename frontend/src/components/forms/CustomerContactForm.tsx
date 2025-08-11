@@ -1,14 +1,19 @@
-import {useForm} from "react-hook-form"
+import {type UseFormRegister, type FieldErrors} from "react-hook-form"
 import { Input } from "../ui/input";
 import { Select, SelectItem, SelectTrigger, SelectValue, SelectContent } from "../ui/select";
-import { type contactDetailsType } from "../../types/ContactSchema";
 import { Label } from "../ui/label";
+import type { requestPropertyType } from "@/types/RequestSchema";
 
 const contactOptions = ["All Day", "Morning", "Afternoon"];
 
+// type Props = {
+//     register: ReturnType<typeof useForm<contactDetailsType>>['register'];
+//     errors: ReturnType<typeof useForm<contactDetailsType>>['formState']['errors'];
+//     onContactHoursChange?: (value: string) => void;
+// };
 type Props = {
-    register: ReturnType<typeof useForm<contactDetailsType>>['register'];
-    errors: ReturnType<typeof useForm<contactDetailsType>>['formState']['errors'];
+    register: UseFormRegister<requestPropertyType>;
+    errors: FieldErrors<requestPropertyType>;
     onContactHoursChange?: (value: string) => void;
 };
 

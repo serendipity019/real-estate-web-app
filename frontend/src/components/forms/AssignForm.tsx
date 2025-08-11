@@ -59,17 +59,6 @@ const AssignPropertyPage = () => {
         }
     });
 
-    const childForm = useForm<contactDetailsType>({
-        resolver: zodResolver(contactForm),
-        // defaultValues: {
-        // name: "",
-        // surname: "",
-        // email: "",
-        // phone: "",
-        // contactHours: "Afternoon"
-        // }
-    });
-
     return (
         <>
             <div className="flex">
@@ -326,8 +315,8 @@ const AssignPropertyPage = () => {
 
                 <div>
                     <CustomerContactInfo 
-                         register={childForm.register} // And here i have critical error
-                         errors={childForm.formState.errors}
+                         register={register} // And here i have critical error
+                         errors={errors}
                          onContactHoursChange={handleContactHoursChange} />
                 </div>
 
