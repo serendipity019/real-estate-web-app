@@ -16,6 +16,6 @@ export const assignForm = z.object({
 //Here i make the merge between the contact form and the assign form
 export const assignSchema = assignForm.merge(contactForm);
 
-export type assignPropertyType = z.infer<typeof assignForm>; 
+export type assignPropertyType = z.infer<typeof assignSchema>; 
 
 export type assignOnlyType = z.infer<typeof assignForm>;

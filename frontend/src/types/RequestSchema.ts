@@ -17,6 +17,6 @@ export const requestForm = z.object({
 
 export const requestSchema = requestForm.merge(contactForm);
 
-export type requestPropertyType = z.infer<typeof requestForm>;
+export type requestPropertyType = z.infer<typeof requestSchema>;
 
 export type requestOnlyType = z.infer<typeof requestForm>;
