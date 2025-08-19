@@ -9,7 +9,7 @@ export const requestForm = z.object({
     priceTo: z.coerce.number().positive(),
     category:z.string().min(1, "Category is required"),
     type: z.string().min(1, "Property type is required"),
-    status: z.enum(["Rent", "Buy"]).default("Rent"),
+    status: z.enum(["Rent", "Buy"]),
     squareMetersFrom: z.coerce.number().positive(),
     squareMetersTo: z.coerce.number().positive(),
     description: z.string().min(7)

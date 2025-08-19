@@ -11,7 +11,7 @@ import { categories } from "@/data/category-data";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import CustomerContactInfo from "./CustomerContactForm";
-import { type contactDetailsType, contactForm } from "../../types/ContactSchema";
+//import { type contactDetailsType, contactForm } from "../../types/ContactSchema";
 import ContactInfo from "@/components/layout/ContactInfo"; 
 
 const RequestForm = () => {
