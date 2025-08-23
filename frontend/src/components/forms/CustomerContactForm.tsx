@@ -1,8 +1,8 @@
-import {type UseFormRegister, type FieldErrors} from "react-hook-form"
+import {type UseFormRegister, type FieldErrors, type FieldValues} from "react-hook-form"
 import { Input } from "../ui/input";
 import { Select, SelectItem, SelectTrigger, SelectValue, SelectContent } from "../ui/select";
 import { Label } from "../ui/label";
-import type { requestPropertyType } from "@/types/RequestSchema";
+import {type Path} from "react-hook-form";
 
 const contactOptions = ["All Day", "Morning", "Afternoon"];
 
@@ -11,14 +11,13 @@ const contactOptions = ["All Day", "Morning", "Afternoon"];
 //     errors: ReturnType<typeof useForm<contactDetailsType>>['formState']['errors'];
 //     onContactHoursChange?: (value: string) => void;
 // };
-type Props = {
-    register: UseFormRegister<requestPropertyType>;
-    errors: FieldErrors<requestPropertyType>;
+type Props<TFormValues extends FieldValues> = {
+    register: UseFormRegister<TFormValues>;
+    errors: FieldErrors<TFormValues>;
     onContactHoursChange?: (value: string) => void;
 };
 
-const CustomerContactInfo = ({ register, errors, onContactHoursChange }: Props) => {
-    // const { register, formState: { errors } } = useFormContext<contactDetailsType>(); 
+const CustomerContactInfo = <TFormValues extends FieldValues>({ register, errors, onContactHoursChange }: Props<TFormValues>) => {
 
     return (
         <>
@@ -28,30 +27,30 @@ const CustomerContactInfo = ({ register, errors, onContactHoursChange }: Props) 
 
                 <div>
                     <Label className="text-re-dark mb-1" htmlFor="name">Name</Label>
-                    <Input {...register("name", {required: "Name is required"})} placeholder="Name" />
+                    <Input {...register("name" as Path<TFormValues>, {required: "Name is required"})} placeholder="Name" />
                     {errors.name && (
-                        <p className="text-red-500 text-sm">{errors.name.message}</p>
+                        <p className="text-red-500 text-sm">{errors.name.message as string}</p>
                     )}
                 </div>
                 <div>
                     <Label className="text-re-dark mb-1" htmlFor="surname">Surname</Label>
-                    <Input {...register("surname", {required: "Surname is required"})} placeholder="Surname" />
+                    <Input {...register("surname" as Path<TFormValues>, {required: "Surname is required"})} placeholder="Surname" />
                     {errors.surname && (
-                        <p className="text-red-500 text-sm">{errors.surname.message}</p>
+                        <p className="text-red-500 text-sm">{errors.surname.message as string}</p>
                     )}
                 </div>
                 <div>
                     <Label className="text-re-dark mb-1" htmlFor="email">Email</Label>
-                    <Input {...register("email", {required: "Email is required"})} placeholder="Email" type="email" />
+                    <Input {...register("email" as Path<TFormValues>, {required: "Email is required"})} placeholder="Email" type="email" />
                     {errors.email && (
-                        <p className="text-red-500 text-sm">{errors.email.message}</p>
+                        <p className="text-red-500 text-sm">{errors.email.message as string}</p>
                     )}
                 </div>
                 <div>
                     <Label className="text-re-dark mb-1" htmlFor="phone">Phone</Label>
-                    <Input {...register("phone", {required: "Phonenumber is required"})} placeholder="e.g: 0306987455174" />
+                    <Input {...register("phone" as Path<TFormValues>, {required: "Phonenumber is required"})} placeholder="e.g: 0306987455174" />
                     {errors.phone && (
-                        <p className="text-red-500 text-sm">{errors.phone.message}</p>
+                        <p className="text-red-500 text-sm">{errors.phone.message as string}</p>
                     )}
                 </div>
                 <div>
@@ -71,11 +70,7 @@ const CustomerContactInfo = ({ register, errors, onContactHoursChange }: Props) 
                     </Select>
                 </div>          
                 
-            </div>
-            
-
-            
-
+            </div>                      
         </>
     );
 };

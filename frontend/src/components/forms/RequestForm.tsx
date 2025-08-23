@@ -11,7 +11,6 @@ import { categories } from "@/data/category-data";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import CustomerContactInfo from "./CustomerContactForm";
-//import { type contactDetailsType, contactForm } from "../../types/ContactSchema";
 import ContactInfo from "@/components/layout/ContactInfo"; 
 
 const RequestForm = () => {
@@ -279,8 +278,8 @@ const RequestForm = () => {
                         <Textarea {...register("description")} placeholder="Description of the property" />
                     </div>
                     <div>
-                        <CustomerContactInfo 
-                            register={register} // And here i have critical error
+                        <CustomerContactInfo<requestPropertyType> 
+                            register={register}
                             errors={errors}
                             onContactHoursChange={handleContactHoursChange} />
                     </div>

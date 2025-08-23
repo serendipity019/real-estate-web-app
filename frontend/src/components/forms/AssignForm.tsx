@@ -314,8 +314,8 @@ const AssignPropertyPage = () => {
                 </div>
 
                 <div>
-                    <CustomerContactInfo 
-                         register={register} // And here i have critical error
+                    <CustomerContactInfo<assignPropertyType> 
+                         register={register}
                          errors={errors}
                          onContactHoursChange={handleContactHoursChange} />
                 </div>

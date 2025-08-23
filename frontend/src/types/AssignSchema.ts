@@ -8,7 +8,7 @@ export const assignForm = z.object({
     price: z.coerce.number().positive(),
     category:z.string().min(1, "Category is required"),
     type: z.string().min(1, "Property type is required"),
-    status: z.enum(["Rent", "Sale"]).default("Rent"),
+    status: z.enum(["Rent", "Sale"]),
     squareMeters: z.coerce.number().positive(),
     description: z.string().min(7)
 });
