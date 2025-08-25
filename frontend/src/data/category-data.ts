@@ -23,7 +23,7 @@ const unsortedCategories = {
         "Detached House",
         "Floor Office",
         "Industrial Area",
-        "Logistic Strage Space",
+        "Logistic Storage Space",
         "Office",
         "Parking Building",
         "Plot",
@@ -41,7 +41,7 @@ const unsortedCategories = {
         "Land for Development",
         "Land out of City Plan",
         "Land out of Settlement",
-        "Land withn Settlement",
+        "Land within Settlement",
         "Large Land",
         "Other Land" ],
     "Other Properties": [
