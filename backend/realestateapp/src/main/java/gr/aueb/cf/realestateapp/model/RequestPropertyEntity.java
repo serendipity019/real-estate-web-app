@@ -1,7 +1,7 @@
 package gr.aueb.cf.realestateapp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import gr.aueb.cf.realestateapp.core.enums.RequestTypeEnum;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,4 +22,8 @@ public class RequestPropertyEntity extends BasePropertyAbstractEntity{
     private Integer squareMetersFrom;
 
     private Integer squareMetersTo;
+
+    @Column(name = "request_purpose", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private RequestTypeEnum requestPurpose;
 }

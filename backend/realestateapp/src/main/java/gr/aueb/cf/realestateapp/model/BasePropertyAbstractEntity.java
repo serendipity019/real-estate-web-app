@@ -1,5 +1,7 @@
 package gr.aueb.cf.realestateapp.model;
 
+import gr.aueb.cf.realestateapp.core.enums.PropertyStatusEnum;
+import gr.aueb.cf.realestateapp.model.static_data.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,29 +24,39 @@ public class BasePropertyAbstractEntity extends BaseAbstractEntity {
     @Column(unique = true)
     private String uuid;
 
-    @Column(nullable = false)
-    private String region;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "region_id",nullable = false)
+    private RegionEntity region;
 
-    @Column(nullable = false)
-    private String county;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "county_id", nullable = false)
+    private CountyEntity county;
 
-    @Column(nullable = false)
-    private String area;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "area_id", nullable = false)
+    private AreaEntity area;
 
-    @Column(nullable = false)
-    private String category;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
+    private PropertyCategoriesEntity category;
 
-    @Column(nullable = false)
-    private String type;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "type_id", nullable = false)
+    private PropertyTypesEntity type;
 
-    @Column(nullable = false)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "real_estate_status", nullable = false)
+    private PropertyStatusEnum RealEstateStatus;
 
     @Column(nullable = false)
     private String description;
 
-    @Column(name = "is_active")
-    private boolean active;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity user;
+
+//    @Column(name = "is_active")
+//    private boolean active;
 
     @CreatedBy
     @Column(name = "created_by")

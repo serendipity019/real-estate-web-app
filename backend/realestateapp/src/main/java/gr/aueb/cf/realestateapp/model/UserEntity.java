@@ -28,5 +28,8 @@ public class UserEntity extends BaseAbstractEntity {
     private String phone;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "contact_hours")
     private ContactHours contactHours;
+
+
 }
