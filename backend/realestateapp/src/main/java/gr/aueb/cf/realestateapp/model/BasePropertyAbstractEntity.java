@@ -68,6 +68,6 @@ public class BasePropertyAbstractEntity extends BaseAbstractEntity {
 
     @PrePersist
     public void initializeUUID() {
-        if (uuid == null) uuid = UUID.randomUUID().toString();
+        if (uuid == null || uuid.trim().isEmpty()) uuid = UUID.randomUUID().toString();
     }
 }

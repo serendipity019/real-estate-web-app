@@ -1,6 +1,7 @@
 package gr.aueb.cf.realestateapp.model;
 
 import gr.aueb.cf.realestateapp.core.enums.ContactHours;
+import gr.aueb.cf.realestateapp.core.enums.RoleEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,5 +32,8 @@ public class UserEntity extends BaseAbstractEntity {
     @Column(name = "contact_hours")
     private ContactHours contactHours;
 
+    @Enumerated(EnumType.STRING)
+    private RoleEnum role = RoleEnum.USER;
 
+    private String password;
 }
