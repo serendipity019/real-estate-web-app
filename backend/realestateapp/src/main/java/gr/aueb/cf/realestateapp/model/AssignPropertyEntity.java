@@ -24,4 +24,13 @@ public class AssignPropertyEntity extends BasePropertyAbstractEntity{
     @Column(name = "assign_purpose", nullable = false)
     @Enumerated(EnumType.STRING)
     private AssignTypeEnum AssignPurpose;
+
+    @Column(nullable = false)
+    private String street;
+
+    @Column(name = "street_number",nullable = false)
+    private String streetNumber;
+
+    @Column(name = "post_code")
+    private Long postCode;
 }
