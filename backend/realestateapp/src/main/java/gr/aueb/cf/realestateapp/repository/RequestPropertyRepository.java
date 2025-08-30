@@ -1,4 +1,4 @@
-package gr.aueb.cf.realestateapp.model.repository;
+package gr.aueb.cf.realestateapp.repository;
 
 import gr.aueb.cf.realestateapp.core.enums.PropertyStatusEnum;
 import gr.aueb.cf.realestateapp.model.AssignPropertyEntity;

@@ -1,4 +1,4 @@
-package gr.aueb.cf.realestateapp.model.repository;
+package gr.aueb.cf.realestateapp.repository;
 
 import gr.aueb.cf.realestateapp.model.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

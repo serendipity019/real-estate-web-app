@@ -1,4 +1,4 @@
-package gr.aueb.cf.realestateapp.model.repository.static_repo;
+package gr.aueb.cf.realestateapp.repository.static_repo;
 
 import gr.aueb.cf.realestateapp.model.static_data.RegionEntity;
 import org.springframework.data.jpa.domain.Specification;

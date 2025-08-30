@@ -1,9 +1,9 @@
-package gr.aueb.cf.realestateapp.model.config;
+package gr.aueb.cf.realestateapp.config;
 
 import gr.aueb.cf.realestateapp.core.enums.ContactHours;
 import gr.aueb.cf.realestateapp.core.enums.RoleEnum;
 import gr.aueb.cf.realestateapp.model.UserEntity;
-import gr.aueb.cf.realestateapp.model.repository.UserRepository;
+import gr.aueb.cf.realestateapp.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
