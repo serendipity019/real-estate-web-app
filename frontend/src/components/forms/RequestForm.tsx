@@ -12,6 +12,7 @@ import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import CustomerContactInfo from "./CustomerContactForm";
 import ContactInfo from "@/components/layout/ContactInfo"; 
+import ReqStar from "../logo/RequiredStar";
 
 const RequestForm = () => {
 
@@ -81,7 +82,7 @@ const RequestForm = () => {
 
                 <form onSubmit={handleSubmit((data) => console.log(data))} className="space-y-4">
                                 <div>
-                                    <Label htmlFor="region" className="text-re-dark mb-1">Region</Label>
+                                    <Label htmlFor="region" className="text-re-dark mb-1">Region<ReqStar/></Label>
                                     <Controller
                         name="region"
                         control={control}
@@ -112,7 +113,7 @@ const RequestForm = () => {
                         {errors.region && <p className="text-red-500 text-sm">{errors.region.message}</p>}
                     </div>
                     <div>
-                        <Label htmlFor="county" className="text-re-dark mb-1">County</Label>
+                        <Label htmlFor="county" className="text-re-dark mb-1">County<ReqStar/></Label>
                         <Controller
                             name="county"
                             control={control}
@@ -143,7 +144,7 @@ const RequestForm = () => {
                     </div>
 
                     <div>
-                        <Label htmlFor="area" className="text-re-dark mb-1">Area</Label>
+                        <Label htmlFor="area" className="text-re-dark mb-1">Area<ReqStar/></Label>
                         <Controller
                             name="area"
                             control={control}
@@ -173,7 +174,7 @@ const RequestForm = () => {
                     </div>
 
                     <div>
-                        <Label className="text-re-dark mb-1" htmlFor="category">Category</Label>
+                        <Label className="text-re-dark mb-1" htmlFor="category">Category<ReqStar/></Label>
                         <Controller
                             name="category"
                             control={control}
@@ -204,7 +205,7 @@ const RequestForm = () => {
                     </div>
 
                     <div>
-                        <Label className="text-re-dark mb-1" htmlFor="type">Type of Property</Label>
+                        <Label className="text-re-dark mb-1" htmlFor="type">Type of Property<ReqStar/></Label>
                         <Controller
                             name="type"
                             control={control}
@@ -233,7 +234,7 @@ const RequestForm = () => {
                         )}
                     </div>
                     <div>
-                        <Label className="text-re-dark mb-1" htmlFor="price">Price</Label>
+                        <Label className="text-re-dark mb-1" htmlFor="price">Price<ReqStar/></Label>
                         <div className="flex space-x-2">
                             <Input {...register("priceFrom")} placeholder="from" />
                             {errors.priceFrom && (
@@ -246,7 +247,7 @@ const RequestForm = () => {
                         </div>
                     </div>
                     <div>
-                        <Label className="text-re-dark mb-1" htmlFor="squareMeter">Sq.m</Label>
+                        <Label className="text-re-dark mb-1" htmlFor="squareMeter">Sq.m<ReqStar/></Label>
                         <div className="flex space-x-2">
                             <Input {...register("squareMetersFrom")} placeholder="from" />
                             {errors.squareMetersFrom && (
@@ -259,7 +260,7 @@ const RequestForm = () => {
                         </div>
                     </div>
                     <div>
-                        <Label className="text-re-dark mb-1" htmlFor="status">To</Label>
+                        <Label className="text-re-dark mb-1" htmlFor="status">To<ReqStar/></Label>
                         <Select {...register("status")} defaultValue="Rent" onValueChange={(val) => console.log(val)}>
                             <SelectTrigger className="w-full">
                                 <SelectValue placeholder="Select purpose of use" />
@@ -274,17 +275,18 @@ const RequestForm = () => {
                         </Select>    
                     </div>
                     <div>
-                        <Label className="text-re-dark mb-1" htmlFor="description">Description</Label>
+                        <Label className="text-re-dark mb-1" htmlFor="description">Description<ReqStar/></Label>
                         <Textarea {...register("description")} placeholder="Description of the property" />
                     </div>
                     <div>
                         <CustomerContactInfo<requestPropertyType> 
                             register={register}
                             errors={errors}
-                            onContactHoursChange={handleContactHoursChange} />
+                            onContactHoursChange={handleContactHoursChange}
+                            parent= "request"  />
                     </div>
 
-                    <p className="mb-0.5 mt-1">Please, fill in the form and then Click the Send button. Fields marked with are mandatory fields</p>    
+                    <p className="mb-0.5 mt-1">Please, fill in the form and then Click the Send button. Fields marked with <ReqStar/> are mandatory fields</p>    
                     <div>
                         <Button type="submit" className="bg-re-darker text-white hover:bg-re-light">
                             Send

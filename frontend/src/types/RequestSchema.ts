@@ -1,5 +1,5 @@
 import {z} from "zod"; 
-import { contactForm } from "./ContactSchema";
+import { contactFormBase } from "./ContactSchema";
 
 export const requestForm = z.object({
     region: z.string().min(1, "Region is required"),
@@ -15,7 +15,12 @@ export const requestForm = z.object({
     description: z.string().min(7)
 });
 
-export const requestSchema = requestForm.merge(contactForm);
+export const requestSchema = requestForm.merge(contactFormBase).refine((data) => {
+        if(data.password || data.confirmPassword){
+            return data.password === data.confirmPassword;
+        }
+        return true; 
+    }, {message: "Passwords don't match", path: ["confirmPassword"]});
 
 export type requestPropertyType = z.infer<typeof requestSchema>;
 

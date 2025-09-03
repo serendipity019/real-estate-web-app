@@ -11,8 +11,8 @@ import { Textarea } from "../ui/textarea";
 import CustomerContactInfo from "./CustomerContactForm";
 import { categories } from "@/data/category-data"; 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { type contactDetailsType, contactForm } from "../../types/ContactSchema";
 import { Button } from "../ui/button";
+import ReqStar from "../logo/RequiredStar";
 
 
 const AssignPropertyPage = () => { 
@@ -78,7 +78,7 @@ const AssignPropertyPage = () => {
 
             <form onSubmit={handleSubmit((data) => console.log(data))} className="space-y-4">
                 <div>
-                    <Label htmlFor="region" className="text-re-dark mb-1">Region</Label>
+                    <Label htmlFor="region" className="text-re-dark mb-1">Region<ReqStar/></Label>
                     {/* <select
                         {...register("region", { required: "Region is required" })}
                         value={selectedRegion}
@@ -128,7 +128,7 @@ const AssignPropertyPage = () => {
                 </div>
 
                 <div>
-                    <Label htmlFor="county" className="text-re-dark mb-1">County</Label>
+                    <Label htmlFor="county" className="text-re-dark mb-1">County<ReqStar/></Label>
                     {/* <select
                         {...register("county", { required: "County is required" })}
                         value={selectedCounty}
@@ -175,7 +175,7 @@ const AssignPropertyPage = () => {
                 </div>
 
                 <div>
-                    <Label htmlFor="area" className="text-re-dark mb-1">Area</Label>
+                    <Label htmlFor="area" className="text-re-dark mb-1">Area<ReqStar/></Label>
                     {/* <select
                         {...register("area", { required: "Area is required" })}
                         value={selectedArea}
@@ -215,17 +215,37 @@ const AssignPropertyPage = () => {
                     />
                     {errors.area && <p className="text-red-500 text-sm">{errors.area.message}</p>}
                 </div>
-
                 <div>
-                    <Label className="text-re-dark mb-1" htmlFor="price">Price</Label>
-                    <Input {...register("price")} placeholder="Price" />
+                    <Label className="text-re-dark mb-1" htmlFor="street">Street<ReqStar/></Label>
+                    <Input {...register("street", {required: "Street is required"})} placeholder="Street" />
+                    {errors.street && (
+                        <p className="text-red-500 text-sm">{errors.street.message as string}</p>
+                    )}
+                </div>
+                <div>
+                    <Label className="text-re-dark mb-1" htmlFor="streetNumber">Street Number<ReqStar/></Label>
+                    <Input {...register("streetNumber", {required: "Street number is required"})} placeholder="Street Number" />
+                    {errors.streetNumber && (
+                        <p className="text-red-500 text-sm">{errors.streetNumber.message as string}</p>
+                    )}
+                </div>
+                <div>
+                    <Label className="text-re-dark mb-1" htmlFor="postCode">Post Code</Label>
+                    <Input {...register("postCode")} placeholder="Post Code" />
+                    {errors.postCode && (
+                        <p className="text-red-500 text-sm">{errors.postCode.message as string}</p>
+                    )}
+                </div>
+                <div>
+                    <Label className="text-re-dark mb-1" htmlFor="price">Price<ReqStar/></Label>
+                    <Input {...register("price", {required: "Price is required"})} placeholder="Price" />
                     {errors.price && (
                         <p className="text-red-500 text-sm">{errors.price.message}</p>
                     )}
                 </div>
 
                 <div>
-                    <Label className="text-re-dark mb-1" htmlFor="category">Category</Label>
+                    <Label className="text-re-dark mb-1" htmlFor="category">Category<ReqStar/></Label>
                     <Controller
                         name="category"
                         control={control}
@@ -256,7 +276,7 @@ const AssignPropertyPage = () => {
                 </div>
 
                 <div>
-                    <Label className="text-re-dark mb-1" htmlFor="type">Type of Property</Label>
+                    <Label className="text-re-dark mb-1" htmlFor="type">Type of Property<ReqStar/></Label>
                     <Controller
                         name="type"
                         control={control}
@@ -287,7 +307,7 @@ const AssignPropertyPage = () => {
 
 
                 <div>
-                    <Label className="text-re-dark mb-1" htmlFor="status">For</Label>
+                    <Label className="text-re-dark mb-1" htmlFor="status">For<ReqStar/></Label>
                     <Select {...register("status")} defaultValue="Rent" onValueChange={(val) => console.log(val)}>
                         <SelectTrigger className="w-full">
                             <SelectValue placeholder="Select purpose of use" />
@@ -302,14 +322,14 @@ const AssignPropertyPage = () => {
                     </Select>    
                 </div>
                 <div>
-                    <Label className="text-re-dark mb-1" htmlFor="squareMeters">Sq.m</Label>
+                    <Label className="text-re-dark mb-1" htmlFor="squareMeters">Sq.m<ReqStar/></Label>
                     <Input {...register("squareMeters")} placeholder="Square meters of the property" />
                     {errors.squareMeters && (
                         <p className="text-red-500 text-sm">{errors.squareMeters.message}</p>
                     )}
                 </div>
                 <div>
-                    <Label className="text-re-dark mb-1" htmlFor="description">Description</Label>
+                    <Label className="text-re-dark mb-1" htmlFor="description">Description<ReqStar/></Label>
                     <Textarea {...register("description")} placeholder="Description of the property" />
                 </div>
 
@@ -317,10 +337,11 @@ const AssignPropertyPage = () => {
                     <CustomerContactInfo<assignPropertyType> 
                          register={register}
                          errors={errors}
-                         onContactHoursChange={handleContactHoursChange} />
+                         onContactHoursChange={handleContactHoursChange}
+                         parent= "assign" />
                 </div>
 
-                <p className="mb-0.5 mt-1">Please, fill in the form and then Click the Send button. Fields marked with are mandatory fields</p>    
+                <p className="mb-0.5 mt-1">Please, fill in the form and then Click the Send button. Fields marked with <ReqStar/> are mandatory fields</p>    
                 <div>
                     <Button type="submit" className="bg-re-darker text-white hover:bg-re-light">
                         Send
