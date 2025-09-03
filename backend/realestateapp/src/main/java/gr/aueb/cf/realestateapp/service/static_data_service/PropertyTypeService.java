@@ -13,11 +13,19 @@ import java.util.stream.Collectors;
 public class PropertyTypeService {
     private final PropertyTypeRepository typeRepository;
 
-    public List<PropertyTypeResponseDTO> getAllPropertyTypes() {
-        return typeRepository.findAll()
+    public List<PropertyTypeResponseDTO> getPropertyTypesByCategory(Long categoryId) {
+        return typeRepository.findByCategoryId(categoryId)
                 .stream()
                 .map(type -> new PropertyTypeResponseDTO(
-                        type.getId(), type.getName(), type.getCategory().getId()))
-                .collect(Collectors.toList());
+                        type.getId(), type.getName()))
+                .toList();
     }
+
+//    public List<PropertyTypeResponseDTO> getAllPropertyTypes() {
+//        return typeRepository.findAll()
+//                .stream()
+//                .map(type -> new PropertyTypeResponseDTO(
+//                        type.getId(), type.getName()))
+//                .collect(Collectors.toList());
+//    }
 }
