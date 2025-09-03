@@ -13,10 +13,17 @@ import java.util.stream.Collectors;
 public class CountyService {
     private final CountyRepository countyRepository;
 
-    public List<CountyResponseDTO> getAllCounties() {
-        return countyRepository.findAll()
+    public List<CountyResponseDTO> getCountiesByRegion(Long regionId) {
+        return countyRepository.findByRegionIdOrderByNameAsc(regionId)
                 .stream()
-                .map(county -> new CountyResponseDTO(county.getId(), county.getName(), county.getRegion().getId()))
+                .map(county -> new CountyResponseDTO(county.getId(), county.getName()))
                 .collect(Collectors.toList());
     }
+
+//    public List<CountyResponseDTO> getAllCounties() {
+//        return countyRepository.findAll()
+//                .stream()
+//                .map(county -> new CountyResponseDTO(county.getId(), county.getName()))
+//                .collect(Collectors.toList());
+//    }
 }

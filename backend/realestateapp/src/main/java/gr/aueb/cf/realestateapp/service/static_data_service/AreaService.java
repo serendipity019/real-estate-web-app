@@ -14,10 +14,17 @@ public class AreaService {
 
     private final AreaRepository areaRepository;
 
-    public List<AreaResponseDTO> getAllAreas() {
-        return areaRepository.findAll()
+    public List<AreaResponseDTO> getAreasByCounty(Long countyId) {
+        return areaRepository.findByCountyIdOrderByNameAsc(countyId)
                 .stream()
-                .map( area -> new AreaResponseDTO(area.getId(), area.getName(), area.getCounty().getId()))
-                .collect(Collectors.toList());
+                .map(area -> new AreaResponseDTO(area.getId(), area.getName()))
+                .toList();
     }
+
+//    public List<AreaResponseDTO> getAllAreas() {
+//        return areaRepository.findAll()
+//                .stream()
+//                .map( area -> new AreaResponseDTO(area.getId(), area.getName()))
+//                .collect(Collectors.toList());
+//    }
 }
