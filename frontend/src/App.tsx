@@ -8,6 +8,7 @@ import AboutUsEn from './pages/en/AboutUs'
 import ServicesEn from './pages/en/Services'
 import AssignForm from './components/forms/AssignForm'
 import RequestForm from './components/forms/RequestForm'
+import LoginEn from './pages/en/LoginEn'
 
 function App() {
   
@@ -24,6 +25,7 @@ function App() {
             <Route path="contact" element={<ContactInfoEl/>} />
             <Route path="about" element={<AboutUsEn/>} />
             <Route path="services" element={<ServicesEn/>} />
+            <Route path='login' element={<LoginEn/>} />
             <Route path='*' element={<NotFoundPage/>} />
           </Routes>
       </BrowserRouter>
