@@ -9,6 +9,9 @@ import ServicesEn from './pages/en/Services'
 import AssignForm from './components/forms/AssignForm'
 import RequestForm from './components/forms/RequestForm'
 import LoginEn from './pages/en/LoginEn'
+import DashboardPage from './pages/en/DashboardEnPage'
+import MainLayout from './components/layout/MainLayout'
+import NewPasswordEn from './pages/en/forgot-password'
 
 function App() {
   
@@ -26,6 +29,8 @@ function App() {
             <Route path="about" element={<AboutUsEn/>} />
             <Route path="services" element={<ServicesEn/>} />
             <Route path='login' element={<LoginEn/>} />
+            <Route path='dashboard' element={<MainLayout><DashboardPage/></MainLayout>} />
+            <Route path='new-password-en' element={<NewPasswordEn/>} />
             <Route path='*' element={<NotFoundPage/>} />
           </Routes>
       </BrowserRouter>
