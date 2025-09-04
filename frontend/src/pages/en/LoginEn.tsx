@@ -1,4 +1,4 @@
-import { z} from "zod";
+
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -8,12 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {Eye, EyeOff} from "lucide-react";
 import  BlBglogo from "@/components/logo/BlBgLogo";
-const loginSchema = z.object({
-    email: z.string().email({message: "Invalid email address"}),
-    password: z.string().min(6, {message: "Password must be at least 6 characters long"})
-});
+import { loginSchema, type LoginData } from "@/api/login";
 
-type LoginData = z.infer<typeof loginSchema>;
 
 const LoginEn = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -126,7 +122,7 @@ const LoginEn = () => {
                     </Button>
                 </div>
                 <div className="mt-4 text-center">
-                    <Link to="/forgot-password" className="text-sm text-blue-500 hover:underline">
+                    <Link to="/new-password-en" className="text-sm text-blue-500 hover:underline">
                     Forgot your Password?
                     </Link>
                 </div>    
