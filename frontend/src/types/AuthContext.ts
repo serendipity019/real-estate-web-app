@@ -1,9 +1,12 @@
+import type { LoginData } from "@/api/login";
 import { createContext } from "react";
 
 type AuthContextProps = {
     isAuthenticated: boolean;
-    login: (token: string) => void;
-    logout: () => void;
+    loginUser: (fields: LoginData) => Promise<void> //(token: string) => void;
+    logoutUser: () => void;
+    role?: string;
+    firstname?: string;
 };
 
 export const AuthContext = createContext<AuthContextProps | undefined>(undefined);

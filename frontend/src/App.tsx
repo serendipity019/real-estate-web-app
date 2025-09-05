@@ -11,7 +11,8 @@ import RequestForm from './components/forms/RequestForm'
 import LoginEn from './pages/en/LoginEn'
 import DashboardPage from './pages/en/DashboardEnPage'
 import MainLayout from './components/layout/MainLayout'
-import NewPasswordEn from './pages/en/forgot-password'
+import NewPasswordEn from './pages/en/ForgotPassword'
+
 
 function App() {
   
