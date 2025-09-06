@@ -1,5 +1,5 @@
 // need to change the name of this file to AssignPropertyPage.tsx
-import {assignSchema, type assignPropertyType} from "../../types/AssignSchema";
+import {assignSchema, type assignPropertyType} from "../../types/form-schemas/AssignSchema";
 import { useForm, Controller } from "react-hook-form";
 import  { useState } from "react";
 import { regionData } from "../../data/administrative-data"; // Assuming this is the correct

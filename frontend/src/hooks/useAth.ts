@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthContext } from "@/types/AuthContext";
+import { AuthContext } from "@/types/form-schemas/AuthContext";
 
 export function useAuth() {
     const ctx = useContext(AuthContext);

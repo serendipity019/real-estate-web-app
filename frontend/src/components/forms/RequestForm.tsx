@@ -2,7 +2,7 @@ import LineLogo from "../logo/LineLogo";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Select, SelectValue, SelectContent, SelectTrigger, SelectItem } from "../ui/select";
-import {requestSchema, type requestPropertyType} from "../../types/RequestSchema";
+import {requestSchema, type requestPropertyType} from "../../types/form-schemas/RequestSchema";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import  { useState } from "react";
