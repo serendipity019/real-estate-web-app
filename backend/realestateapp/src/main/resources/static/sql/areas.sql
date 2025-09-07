@@ -34,5 +34,5 @@ INSERT INTO areas (id, name, county_id) VALUES
 (33,'Visaltia', 4),
 (34,'Irakleia', 4),
 (35,'Emmanouil Pappas', 4),
-(36,'Amphipolis', 4)
+(36,'Amphipolis', 4);
 ALTER TABLE areas AUTO_INCREMENT = 37;
