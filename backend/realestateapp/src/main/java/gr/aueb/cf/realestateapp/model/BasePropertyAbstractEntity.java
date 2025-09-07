@@ -46,7 +46,7 @@ public class BasePropertyAbstractEntity extends BaseAbstractEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "real_estate_status", nullable = false)
-    private PropertyStatusEnum RealEstateStatus = PropertyStatusEnum.UNOBSERVED;
+    private PropertyStatusEnum realEstateStatus = PropertyStatusEnum.UNOBSERVED;
 
     @Column(nullable = false)
     private String description;
