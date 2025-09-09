@@ -1,5 +1,6 @@
 package gr.aueb.cf.realestateapp.restApi.static_data;
 
+import gr.aueb.cf.realestateapp.core.exceptions.AppObjectNotFoundException;
 import gr.aueb.cf.realestateapp.dto.static_dto.CountyResponseDTO;
 import gr.aueb.cf.realestateapp.service.static_data_service.CountyService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -19,11 +20,11 @@ import java.util.List;
 public class CountyController {
     private final CountyService countyService;
 
-    @GetMapping
+    @GetMapping("/{regionId}")
     @Operation(summary = "Get counties", description = "Returns a list of counties with specific regionId")
     public List<CountyResponseDTO> getCounties(
             @RequestParam Long regionId
-    ){
+    ) throws AppObjectNotFoundException {
             return countyService.getCountiesByRegion(regionId);
     }
 }
