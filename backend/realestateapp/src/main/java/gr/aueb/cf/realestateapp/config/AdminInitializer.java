@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class AdminInitializer {
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public PasswordEncoder thisPasswordEncoder() {
         return new BCryptPasswordEncoder(10);
     }
 
@@ -30,7 +30,7 @@ public class AdminInitializer {
                 admin.setPhone("2104578126");
                 admin.setContactHours(ContactHours.ALL_DAY);
                 admin.setRole(RoleEnum.ADMIN);
-                admin.setPassword(passwordEncoder().encode("admin1234"));
+                admin.setPassword(thisPasswordEncoder().encode("admin1234"));
 
                 userRepository.save(admin);
                 System.out.println("Default admin created with email: " + adminEmail);
