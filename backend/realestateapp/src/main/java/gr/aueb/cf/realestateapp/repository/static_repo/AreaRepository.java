@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface AreaRepository extends JpaRepository<AreaEntity, Long>,
         JpaSpecificationExecutor<AreaEntity> {
 
-    Optional<AreaEntity> findByName(String name);
+    Optional<AreaEntity> findById(Long id);
 
     List<AreaEntity> findByCountyIdOrderByNameAsc(Long countyId);
 }

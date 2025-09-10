@@ -1,14 +1,12 @@
 package gr.aueb.cf.realestateapp.restApi.static_data;
 
+import gr.aueb.cf.realestateapp.core.exceptions.AppObjectNotFoundException;
 import gr.aueb.cf.realestateapp.dto.static_dto.AreaResponseDTO;
 import gr.aueb.cf.realestateapp.service.static_data_service.AreaService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
@@ -20,11 +18,11 @@ import java.util.List;
 public class AreaController {
     private final AreaService areaService;
 
-    @GetMapping
+    @GetMapping("/{countyId}")
     @Operation(summary = "Get all areas", description = "Returns a list of areas with specific countyId")
     public List<AreaResponseDTO> getAreas(
-            @RequestParam Long countyId
-    ) {
+            @PathVariable Long countyId
+    ) throws AppObjectNotFoundException {
         return areaService.getAreasByCounty(countyId);
     }
 }
