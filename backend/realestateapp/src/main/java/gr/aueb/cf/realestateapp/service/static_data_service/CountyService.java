@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -20,13 +21,22 @@ public class CountyService {
 
         if (counties.isEmpty()) {
             throw new AppObjectNotFoundException(
-                    "COUNTY_NOT_FOUND",
+                    "",
                     "No counties found for region with id " + regionId
             );
         }
         return counties.stream()
                 .map(county -> new CountyResponseDTO(county.getId(), county.getName()))
                 .collect(Collectors.toList());
+    }
+
+    public Optional<CountyEntity> getCountyById(Long id) throws AppObjectNotFoundException {
+        Optional<CountyEntity> county = countyRepository.findById(id);
+
+        if (county.isEmpty()) {
+            throw new AppObjectNotFoundException("", "No county found with id " + id);
+        }
+        return county;
     }
 
 //    public List<CountyResponseDTO> getAllCounties() {

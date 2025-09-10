@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface CountyRepository extends JpaRepository<CountyEntity, Long>,
         JpaSpecificationExecutor<CountyEntity> {
 
-    Optional<CountyEntity> findByName(String name);
+    Optional<CountyEntity> findById(Long id);
 
     List<CountyEntity> findByRegionIdOrderByNameAsc(Long regionId);
 }

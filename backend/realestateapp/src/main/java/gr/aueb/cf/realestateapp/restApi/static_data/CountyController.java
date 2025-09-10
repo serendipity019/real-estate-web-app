@@ -6,10 +6,7 @@ import gr.aueb.cf.realestateapp.service.static_data_service.CountyService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,7 +20,7 @@ public class CountyController {
     @GetMapping("/{regionId}")
     @Operation(summary = "Get counties", description = "Returns a list of counties with specific regionId")
     public List<CountyResponseDTO> getCounties(
-            @RequestParam Long regionId
+            @PathVariable Long regionId
     ) throws AppObjectNotFoundException {
             return countyService.getCountiesByRegion(regionId);
     }
