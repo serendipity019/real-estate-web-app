@@ -14,8 +14,8 @@ This is a full-stack real estate web application built with:
 ## Features
 
 - User registration & login
-- Role-based access (`User`, `Admin`)
-- Property listing CRUD (Admin only)
+- Role-based access (`User`, `Admin`, `Agent`)
+- Property listing CRUD (Users and Agents)
 - Property search & filters (Users)
 - Swagger API docs
 - Unit testing with JUnit/Mockito
@@ -27,7 +27,14 @@ This is a full-stack real estate web application built with:
 cd frontend
 npm install
 npm run dev
-
-### backend
+```
+### Backend
+```bash
 cd backend
 ./gradlew bootRun
+```
+###For Testing
+```bash
+cd backend
+./gradlew clean test
+```
