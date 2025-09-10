@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface PropertyTypeRepository extends JpaRepository<PropertyTypesEntity, Long>,
         JpaSpecificationExecutor<PropertyTypesEntity> {
 
-    Optional<PropertyTypesEntity> findByName(String name);
+    Optional<PropertyTypesEntity> findById(Long id);
 
     List<PropertyTypesEntity> findByCategoryId(Long categoryId);
 }
