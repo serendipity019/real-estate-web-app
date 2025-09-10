@@ -19,7 +19,7 @@ public record RequestPropertyAdminResponseDTO(
         LocalDateTime createdAt,
         LocalDateTime updatedAt,
         PropertyStatusEnum status,
-        boolean isActive,
+        //boolean isActive,
         String createdBy,
         String lastModifiedBy
 ) {
