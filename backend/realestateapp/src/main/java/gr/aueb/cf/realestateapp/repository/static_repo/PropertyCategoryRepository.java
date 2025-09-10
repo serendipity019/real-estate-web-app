@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface PropertyCategoryRepository extends JpaRepository<PropertyCategoriesEntity, Long>,
         JpaSpecificationExecutor<PropertyCategoriesEntity> {
 
-    Optional<PropertyCategoriesEntity> findByName(String name);
+    Optional<PropertyCategoriesEntity> findById(Long id);
 }
