@@ -33,7 +33,7 @@ public class JwtService {
 
     private Claims extractAllClaims(String token) {
         return Jwts.parser()
-                .setSigningKey(getSignInKey()) // This is deprecated, i tried to make it with verifyWith() but failure all my methods
+                .setSigningKey(getSignInKey()) // This is deprecated, i tried to make it with verifyWith() but failure all my thoughts
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();
