@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface RegionRepository extends JpaRepository<RegionEntity, Long>,
         JpaSpecificationExecutor<RegionEntity> {
 
-    Optional<RegionEntity> findByName(String name);
+    Optional<RegionEntity> findById(Long id);
 }
