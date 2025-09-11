@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Getter
@@ -35,5 +36,14 @@ public class UserEntity extends BaseAbstractEntity {
     @Enumerated(EnumType.STRING)
     private RoleEnum role = RoleEnum.USER;
 
+    @ColumnDefault("true")
+    @Column(name = "is_active")
+    private boolean isActive;
+
     private String password;
+
+    @Column(name = "is_Authenticated")
+    public boolean isAuthenticated() {
+        return this.password != null;
+    }
 }
