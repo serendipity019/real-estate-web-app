@@ -1,6 +1,7 @@
 package gr.aueb.cf.realestateapp.repository;
 
 import gr.aueb.cf.realestateapp.core.enums.PropertyStatusEnum;
+import gr.aueb.cf.realestateapp.core.enums.RequestTypeEnum;
 import gr.aueb.cf.realestateapp.model.AssignPropertyEntity;
 import gr.aueb.cf.realestateapp.model.RequestPropertyEntity;
 import gr.aueb.cf.realestateapp.model.UserEntity;
@@ -19,4 +20,8 @@ public interface RequestPropertyRepository extends JpaRepository<RequestProperty
     List<RequestPropertyEntity> findByUser(UserEntity user);
     List<RequestPropertyEntity> findByRealEstateStatus(PropertyStatusEnum statusEnum);
     Page<RequestPropertyEntity> findByRealEstateStatus(PropertyStatusEnum statusEnum, Pageable pageable);
+    List<RequestPropertyEntity> findAll();
+    Page<RequestPropertyEntity> findAll(Pageable pageable);
+    List<RequestPropertyEntity> findByRequestType(RequestTypeEnum typeEnum);
+    Page<RequestPropertyEntity> findByRequestType(RequestTypeEnum typeEnum, Pageable pageable);
 }
