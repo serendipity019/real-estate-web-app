@@ -35,7 +35,7 @@ npm install
 npm run build
 npm run preview
 ```
-Or you can deploy the /dist file to the static hosting like GitHub Pages or NetLify hosting
+Or you can deploy the /dist file to the static hosting like [GitHub Pages](https://docs.github.com/en/pages) or [NetLify](https://www.netlify.com/) hosting.
 ### Backend
 ```bash
 cd backend
