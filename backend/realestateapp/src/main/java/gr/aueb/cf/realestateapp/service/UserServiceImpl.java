@@ -21,10 +21,11 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class UserService {
+public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
+    @Override
     public UserResponseAdminDTO createUser(UserInsertDTO userInsertDTO) throws AppObjectAlreadyExists {
         if (userExist(userInsertDTO.email())){
             throw new AppObjectAlreadyExists("USER_ALREADY_EXISTS", "User with email: " + userInsertDTO.email() + " already exists." );
@@ -37,6 +38,7 @@ public class UserService {
         return userMapper.mapEntityToAdminResponseDTO(savedUser);
     }
 
+    @Override
     public UserResponseAdminDTO updateUser(Long id, UserAdminUpdateDTO updateDTO, String currentUserEmail) {
         UserEntity user = getUserEntityById(id);
 
@@ -53,12 +55,14 @@ public class UserService {
         return userMapper.mapEntityToAdminResponseDTO(updatedUser);
     }
 
+    @Override
     public void deleteUser(Long id) {
         UserEntity user = getUserEntityById(id);
         user.setActive(false); // I want to have the user in my Data for history or statistic purposes.
         userRepository.save(user);
     }
 
+    @Override
     public List<UserResponseAdminDTO> getAllUsers() {
         List<UserEntity> users = userRepository.findAll();
 
@@ -71,6 +75,7 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public UserResponseAdminDTO getUserByEmail(String email) {
         UserEntity user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new EntityNotFoundException("User with email: " + email + " not found."));
@@ -84,6 +89,7 @@ public class UserService {
                 .orElseThrow(() -> new EntityNotFoundException("User with email: " + email + " not found."));
     }
 
+    @Override
     public UserResponseAdminDTO getUserById(Long id) {
         UserEntity user = userRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User with ID: " + id + " not found."));
@@ -97,6 +103,7 @@ public class UserService {
     }
 
 
+    @Override
     public List<UserResponseAdminDTO> getUsersByRole(RoleEnum role) {
         List<UserEntity> users = userRepository.findByRole(role);
 
@@ -109,6 +116,7 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public boolean userExist(String email) {
         return userRepository.existsByEmail(email);
     }
@@ -118,6 +126,7 @@ public class UserService {
         return (user.getRole() == RoleEnum.ADMIN || user.getRole() == RoleEnum.AGENT);
     }
 
+    @Override
     public boolean userIsAdmin(Long id) {
         UserEntity user = getUserEntityById(id);
         return user.getRole() == RoleEnum.ADMIN;
