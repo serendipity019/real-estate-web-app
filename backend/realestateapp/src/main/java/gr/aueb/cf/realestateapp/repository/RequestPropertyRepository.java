@@ -22,6 +22,6 @@ public interface RequestPropertyRepository extends JpaRepository<RequestProperty
     Page<RequestPropertyEntity> findByRealEstateStatus(PropertyStatusEnum statusEnum, Pageable pageable);
     List<RequestPropertyEntity> findAll();
     Page<RequestPropertyEntity> findAll(Pageable pageable);
-    List<RequestPropertyEntity> findByRequestType(RequestTypeEnum typeEnum);
-    Page<RequestPropertyEntity> findByRequestType(RequestTypeEnum typeEnum, Pageable pageable);
+    List<RequestPropertyEntity> findByRequestPurpose(RequestTypeEnum typeEnum);
+    Page<RequestPropertyEntity> findByRequestPurpose(RequestTypeEnum typeEnum, Pageable pageable);
 }
