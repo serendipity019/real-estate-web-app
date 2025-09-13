@@ -22,12 +22,20 @@ This is a full-stack real estate web application built with:
 
 ## Getting Started
 
-### Frontend
+### Frontend in this development face
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
+### Frontend in production face
+```bash
+cd frontend
+npm install
+npm run build
+npm run preview
+```
+Or you can deploy the /dist file to the static hosting like GitHub Pages or NetLify hosting
 ### Backend
 ```bash
 cd backend
