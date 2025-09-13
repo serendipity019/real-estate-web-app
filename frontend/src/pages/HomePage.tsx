@@ -14,11 +14,11 @@ const HomePage = () => {
         Welcome to Papapanagiotou Real Estate
       </h1>
       <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <Link to="/assign" className="bg-re-light p-6 rounded-lg hover:bg-re-dark hover:text-white">
+        <Link to="/form-assign" className="bg-re-light p-6 rounded-lg hover:bg-re-dark hover:text-white">
           <h2 className="text-2xl font-semibold mb-4">Offer a Property</h2>
           <p>Sell or rent your property with our professional services</p>
         </Link>
-        <Link to="/request" className="bg-re-light p-6 rounded-lg hover:bg-re-dark hover:text-white">
+        <Link to="/form-request" className="bg-re-light p-6 rounded-lg hover:bg-re-dark hover:text-white">
           <h2 className="text-2xl font-semibold mb-4">Request a Property</h2>
           <p>Find your dream property with our assistance</p>
         </Link>
