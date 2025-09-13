@@ -2,6 +2,7 @@ package gr.aueb.cf.realestateapp.repository;
 
 import gr.aueb.cf.realestateapp.core.enums.RoleEnum;
 import gr.aueb.cf.realestateapp.model.UserEntity;
+import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
@@ -16,7 +17,6 @@ public interface UserRepository extends JpaRepository<UserEntity, Long>,
     Optional<UserEntity> findByEmail(String email);
     Optional<UserEntity> findById(Long id);
     List<UserEntity> findByRole(RoleEnum role);
+    List<UserEntity> findAll();
     boolean existsByEmail(String email);
-    boolean isAdminOrAgent(RoleEnum role);
-    boolean isAdmin(RoleEnum role);
 }
