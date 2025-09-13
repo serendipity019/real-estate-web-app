@@ -13,6 +13,7 @@ public record UserResponseAdminDTO(
         ContactHours contactHours,
         Boolean isActive,
         RoleEnum role,
-        LocalDateTime createdAt
+        LocalDateTime createdAt,
+        boolean isAuthenticated
 ) {
 }
