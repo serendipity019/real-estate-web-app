@@ -17,8 +17,8 @@ This is a full-stack real estate web application built with:
 - Role-based access (`User`, `Admin`, `Agent`)
 - Property listing CRUD (Users and Agents)
 - Property search & filters (Users)
-- Swagger API docs
-- Unit testing with JUnit/Mockito
+- Swagger API docs (for the moment only for the static_data) 
+- Unit testing with JUnit/Mockito (a few examples in controllers of parametric entities)
 
 ## Getting Started
 
