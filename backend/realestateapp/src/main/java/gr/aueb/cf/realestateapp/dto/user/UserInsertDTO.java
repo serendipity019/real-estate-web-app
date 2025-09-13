@@ -21,12 +21,6 @@ public record UserInsertDTO(
         @NotNull
         ContactHours contactHours,
 
-        @NotNull
-        RoleEnum role, // Todo: this must removed from here and must be in other DTO e.g UserAdminUpdateDTO only the admin can change this.
-
-        @NotNull  // Todo: And this like the above. I pass this as default true in entity. Later the Admin can deactivate a user.
-        Boolean isActive,
-
         String password
 ) {
         public UserInsertDTO {
