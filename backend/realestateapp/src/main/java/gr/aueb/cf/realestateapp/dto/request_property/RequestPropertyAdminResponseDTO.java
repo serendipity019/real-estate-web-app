@@ -1,6 +1,6 @@
 package gr.aueb.cf.realestateapp.dto.request_property;
 
-import gr.aueb.cf.realestateapp.core.enums.PropertyStatusEnum;
+import gr.aueb.cf.realestateapp.core.enums.AssignStatusEnum;
 
 import java.time.LocalDateTime;
 
@@ -18,7 +18,7 @@ public record RequestPropertyAdminResponseDTO(
         Integer squareMetersTo,
         LocalDateTime createdAt,
         LocalDateTime updatedAt,
-        PropertyStatusEnum status,
+        AssignStatusEnum status,
         //boolean isActive,
         String createdBy,
         String lastModifiedBy
