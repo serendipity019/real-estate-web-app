@@ -1,6 +1,6 @@
 package gr.aueb.cf.realestateapp.dto.request_property;
 
-import gr.aueb.cf.realestateapp.core.enums.AssignStatusEnum;
+import gr.aueb.cf.realestateapp.core.enums.RealEstateStatusEnum;
 import gr.aueb.cf.realestateapp.core.enums.RequestTypeEnum;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -26,7 +26,7 @@ public record RequestPropertyInsertDTO(
         RequestTypeEnum type,
 
         @NotNull(message = "Choose a status")
-        AssignStatusEnum status, // This is only for the admin
+        RealEstateStatusEnum status, // This is only for the admin
 
         @Size(min = 7, message = "Write some words about your property")
         String description,
