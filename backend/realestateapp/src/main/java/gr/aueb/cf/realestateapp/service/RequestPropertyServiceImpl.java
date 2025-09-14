@@ -1,6 +1,6 @@
 package gr.aueb.cf.realestateapp.service;
 
-import gr.aueb.cf.realestateapp.core.enums.PropertyStatusEnum;
+import gr.aueb.cf.realestateapp.core.enums.RealEstateStatusEnum;
 import gr.aueb.cf.realestateapp.core.enums.RequestTypeEnum;
 import gr.aueb.cf.realestateapp.core.exceptions.AppObjectNotAuthorizedException;
 import gr.aueb.cf.realestateapp.core.exceptions.AppObjectNotFoundException;
@@ -120,7 +120,7 @@ public class RequestPropertyServiceImpl implements RequestPropertyService{
 
     // Find by real estate status
     @Override
-    public List<RequestPropertyAdminResponseDTO> getRequestPropertiesByRealEstateStatus(PropertyStatusEnum statusEnum) {
+    public List<RequestPropertyAdminResponseDTO> getRequestPropertiesByRealEstateStatus(RealEstateStatusEnum statusEnum) {
         return requestPropertyRepository.findByRealEstateStatus(statusEnum)
                 .stream()
                 .map(this::mapEntityToAdminResponseDTO)
@@ -129,7 +129,7 @@ public class RequestPropertyServiceImpl implements RequestPropertyService{
 
     // Find by real estate status pageable
     @Override
-    public Page<RequestPropertyAdminResponseDTO> getRequestPropertiesByRealEstateStatus(PropertyStatusEnum statusEnum, Pageable pageable) {
+    public Page<RequestPropertyAdminResponseDTO> getRequestPropertiesByRealEstateStatus(RealEstateStatusEnum statusEnum, Pageable pageable) {
         return requestPropertyRepository.findByRealEstateStatus(statusEnum, pageable)
                 .map(this::mapEntityToAdminResponseDTO);
     }
