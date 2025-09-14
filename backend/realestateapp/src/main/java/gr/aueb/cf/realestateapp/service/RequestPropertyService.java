@@ -1,6 +1,6 @@
 package gr.aueb.cf.realestateapp.service;
 
-import gr.aueb.cf.realestateapp.core.enums.PropertyStatusEnum;
+import gr.aueb.cf.realestateapp.core.enums.RealEstateStatusEnum;
 import gr.aueb.cf.realestateapp.core.enums.RequestTypeEnum;
 import gr.aueb.cf.realestateapp.core.exceptions.AppObjectNotAuthorizedException;
 import gr.aueb.cf.realestateapp.core.exceptions.AppObjectNotFoundException;
@@ -21,8 +21,8 @@ public interface RequestPropertyService {
     List<RequestPropertyAdminResponseDTO> getRequestPropertyByUser(String email);
     List<RequestPropertyAdminResponseDTO> getAllRequestProperties();
     Page<RequestPropertyAdminResponseDTO> getAllRequestProperties(Pageable pageable);
-    List<RequestPropertyAdminResponseDTO> getRequestPropertiesByRealEstateStatus(PropertyStatusEnum statusEnum);
-    Page<RequestPropertyAdminResponseDTO> getRequestPropertiesByRealEstateStatus(PropertyStatusEnum statusEnum, Pageable pageable);
+    List<RequestPropertyAdminResponseDTO> getRequestPropertiesByRealEstateStatus(RealEstateStatusEnum statusEnum);
+    Page<RequestPropertyAdminResponseDTO> getRequestPropertiesByRealEstateStatus(RealEstateStatusEnum statusEnum, Pageable pageable);
     List<RequestPropertyAdminResponseDTO> getRequestPropertyByRequestType(RequestTypeEnum typeEnum);
     Page<RequestPropertyAdminResponseDTO> getRequestPropertyByRequestType(RequestTypeEnum typeEnum, Pageable pageable);
 }
