@@ -1,6 +1,6 @@
 package gr.aueb.cf.realestateapp.core.enums;
 
-public enum PropertyStatusEnum {
+public enum RealEstateStatusEnum {
     UNOBSERVED, // The default price
     AVAILABLE, // For the Assigns
     RESERVED, // For the Assigns

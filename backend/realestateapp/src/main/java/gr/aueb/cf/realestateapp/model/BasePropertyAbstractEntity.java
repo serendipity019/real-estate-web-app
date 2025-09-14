@@ -1,6 +1,6 @@
 package gr.aueb.cf.realestateapp.model;
 
-import gr.aueb.cf.realestateapp.core.enums.PropertyStatusEnum;
+import gr.aueb.cf.realestateapp.core.enums.RealEstateStatusEnum;
 import gr.aueb.cf.realestateapp.model.static_data.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -46,7 +46,7 @@ public class BasePropertyAbstractEntity extends BaseAbstractEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "real_estate_status", nullable = false)
-    private PropertyStatusEnum realEstateStatus = PropertyStatusEnum.UNOBSERVED;
+    private RealEstateStatusEnum realEstateStatus = RealEstateStatusEnum.UNOBSERVED;
 
     @Column(nullable = false)
     private String description;
