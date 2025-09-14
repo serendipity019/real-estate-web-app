@@ -1,5 +1,6 @@
 package gr.aueb.cf.realestateapp.dto.assign_property;
 
+import gr.aueb.cf.realestateapp.core.enums.AssignTypeEnum;
 import gr.aueb.cf.realestateapp.core.enums.RealEstateStatusEnum;
 import gr.aueb.cf.realestateapp.core.enums.RealEstateStatusEnum;
 
@@ -13,6 +14,7 @@ public record AssignPropertyAdminResponseDTO(
         String category,
         String type,
         RealEstateStatusEnum status,
+        AssignTypeEnum assignPurpose,
         String description,
         Integer price,
         Integer squareMeters,
