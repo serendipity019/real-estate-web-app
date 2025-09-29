@@ -6,7 +6,7 @@ import gr.aueb.cf.realestateapp.core.exceptions.AppObjectNotAuthorizedException;
 import gr.aueb.cf.realestateapp.core.exceptions.AppObjectNotFoundException;
 import gr.aueb.cf.realestateapp.dto.request_property.RequestPropertyAdminResponseDTO;
 import gr.aueb.cf.realestateapp.dto.request_property.RequestPropertyInsertDTO;
-import gr.aueb.cf.realestateapp.dto.request_property.RequestPropertyPublicResponseDTO;
+import gr.aueb.cf.realestateapp.mapper.RequestPropertyMapper;
 import gr.aueb.cf.realestateapp.model.RequestPropertyEntity;
 import gr.aueb.cf.realestateapp.model.UserEntity;
 import gr.aueb.cf.realestateapp.model.static_data.*;
@@ -30,12 +30,8 @@ import java.util.stream.Collectors;
 public class RequestPropertyServiceImpl implements RequestPropertyService{
     private final RequestPropertyRepository requestPropertyRepository;
     private final UserRepository userRepository;
-    private final RegionService regionService;
-    private final CountyService countyService;
-    private final AreaService areaService;
-    private final CategoryService categoryService;
-    private final PropertyTypeService propertyTypeService;
     private final UserService userService;
+    private final RequestPropertyMapper propertyMapper;
 
     // Create Request Property
     @Override
@@ -44,10 +40,10 @@ public class RequestPropertyServiceImpl implements RequestPropertyService{
                 .orElseThrow(() -> new EntityNotFoundException("User with email: " + email + " not found "));
 
         RequestPropertyEntity requestProperty = new RequestPropertyEntity();
-        mapInsertDTOToEntity(insertDTO, requestProperty, user);
+        propertyMapper.mapInsertDTOToEntity(insertDTO, requestProperty, user);
 
         RequestPropertyEntity savedRequest = requestPropertyRepository.save(requestProperty);
-        return mapEntityToAdminResponseDTO(savedRequest);
+        return propertyMapper.mapEntityToAdminResponseDTO(savedRequest);
     }
 
     // Update Request Property
@@ -63,7 +59,7 @@ public class RequestPropertyServiceImpl implements RequestPropertyService{
             throw new AppObjectNotAuthorizedException("NOT_AUTHORIZED", "You are not authorized to update this property");
         }
 
-        mapInsertDTOToEntity(updateDTO, requestProperty, requestProperty.getUser());
+        propertyMapper.mapInsertDTOToEntity(updateDTO, requestProperty, requestProperty.getUser());
 
         // Only admin or agent can update status. Is the real estate status.
         if (userService.userIsAdminOrAgent(user.getId())) {
@@ -71,7 +67,7 @@ public class RequestPropertyServiceImpl implements RequestPropertyService{
         }
 
         RequestPropertyEntity updatedRequest = requestPropertyRepository.save(requestProperty);
-        return mapEntityToAdminResponseDTO(updatedRequest);
+        return propertyMapper.mapEntityToAdminResponseDTO(updatedRequest);
     }
 
     // Delete Request Property
@@ -98,7 +94,7 @@ public class RequestPropertyServiceImpl implements RequestPropertyService{
 
         return requestPropertyRepository.findByUser(user)
                 .stream()
-                .map(this::mapEntityToAdminResponseDTO)
+                .map(propertyMapper::mapEntityToAdminResponseDTO)
                 .collect(Collectors.toList());
     }
 
@@ -107,7 +103,7 @@ public class RequestPropertyServiceImpl implements RequestPropertyService{
     public List<RequestPropertyAdminResponseDTO> getAllRequestProperties() {
         return requestPropertyRepository.findAll()
                 .stream()
-                .map(this::mapEntityToAdminResponseDTO)
+                .map(propertyMapper::mapEntityToAdminResponseDTO)
                 .collect(Collectors.toList());
     }
 
@@ -115,7 +111,7 @@ public class RequestPropertyServiceImpl implements RequestPropertyService{
     @Override
     public Page<RequestPropertyAdminResponseDTO> getAllRequestProperties(Pageable pageable) {
         return requestPropertyRepository.findAll(pageable)
-                .map(this::mapEntityToAdminResponseDTO);
+                .map(propertyMapper::mapEntityToAdminResponseDTO);
     }
 
     // Find by real estate status
@@ -123,7 +119,7 @@ public class RequestPropertyServiceImpl implements RequestPropertyService{
     public List<RequestPropertyAdminResponseDTO> getRequestPropertiesByRealEstateStatus(RealEstateStatusEnum statusEnum) {
         return requestPropertyRepository.findByRealEstateStatus(statusEnum)
                 .stream()
-                .map(this::mapEntityToAdminResponseDTO)
+                .map(propertyMapper::mapEntityToAdminResponseDTO)
                 .collect(Collectors.toList());
     }
 
@@ -131,7 +127,7 @@ public class RequestPropertyServiceImpl implements RequestPropertyService{
     @Override
     public Page<RequestPropertyAdminResponseDTO> getRequestPropertiesByRealEstateStatus(RealEstateStatusEnum statusEnum, Pageable pageable) {
         return requestPropertyRepository.findByRealEstateStatus(statusEnum, pageable)
-                .map(this::mapEntityToAdminResponseDTO);
+                .map(propertyMapper::mapEntityToAdminResponseDTO);
     }
 
     // Find by request type e.g RENT Or BUY
@@ -139,76 +135,13 @@ public class RequestPropertyServiceImpl implements RequestPropertyService{
     public List<RequestPropertyAdminResponseDTO> getRequestPropertyByRequestType(RequestTypeEnum typeEnum) {
         return requestPropertyRepository.findByRequestPurpose(typeEnum)
                 .stream()
-                .map(this::mapEntityToAdminResponseDTO)
+                .map(propertyMapper::mapEntityToAdminResponseDTO)
                 .collect(Collectors.toList());
     }
     // Find by request type pageable
     @Override
     public Page<RequestPropertyAdminResponseDTO> getRequestPropertyByRequestType(RequestTypeEnum typeEnum, Pageable pageable) {
         return requestPropertyRepository.findByRequestPurpose(typeEnum, pageable)
-                .map(this::mapEntityToAdminResponseDTO);
-    }
-
-    private void mapInsertDTOToEntity(RequestPropertyInsertDTO dto, RequestPropertyEntity entity, UserEntity user) throws AppObjectNotFoundException {
-        RegionEntity region = regionService.getRegionById(dto.regionId())
-                .orElseThrow(() -> new AppObjectNotFoundException("REGION_NOT_FOUND", "Region with ID: " + dto.regionId() + " not found"));
-        CountyEntity county = countyService.getCountyById(dto.countyId())
-                .orElseThrow(() -> new AppObjectNotFoundException("COUNTY_NOT_FOUND", "County with ID: " + dto.countyId() + " not found"));
-        AreaEntity area = areaService.getAreaById(dto.areaId())
-                .orElseThrow(() -> new AppObjectNotFoundException("AREA_NOT_FOUND", "Area with ID: " + dto.areaId() + " not found"));
-        PropertyCategoriesEntity category = categoryService.getCategoryById(dto.categoryId())
-                .orElseThrow(() -> new AppObjectNotFoundException("CATEGORY_NOT_FOUND", "Category with ID: " + dto.categoryId() + " not found"));
-        PropertyTypesEntity type = propertyTypeService.getPropertyTypeById(dto.typeId())
-                .orElseThrow(() -> new AppObjectNotFoundException("TYPE_NOT_FOUND", "Type with ID: " + dto.typeId() + " not found"));
-
-        entity.setRegion(region);
-        entity.setCounty(county);
-        entity.setCategory(category);
-        entity.setType(type);
-        entity.setRequestPurpose(dto.type());
-        entity.setDescription(dto.description());
-        entity.setPriceFrom(dto.priceFrom());
-        entity.setPriceTo(dto.priceTo());
-        entity.setSquareMetersFrom(dto.squareMetersFrom());
-        entity.setSquareMetersTo(dto.squareMetersTo());
-        entity.setUser(user);
-    }
-
-    private RequestPropertyAdminResponseDTO mapEntityToAdminResponseDTO(RequestPropertyEntity entity) {
-        return new RequestPropertyAdminResponseDTO(
-                entity.getUuid(),
-                entity.getRegion().getName(),
-                entity.getCounty().getName(),
-                entity.getArea().getName(),
-                entity.getCategory().getName(),
-                entity.getType().getName(),
-                entity.getDescription(),
-                entity.getPriceFrom(),
-                entity.getPriceTo(),
-                entity.getSquareMetersFrom(),
-                entity.getSquareMetersTo(),
-                entity.getCreatedAt(),
-                entity.getUpdatedAt(),
-                entity.getRealEstateStatus(),
-                entity.getCreatedBy(),
-                entity.getLastModifiedBy()
-        );
-    }
-
-    private RequestPropertyPublicResponseDTO mapEntityToPublicResponseDTO(RequestPropertyEntity entity) {
-        return new RequestPropertyPublicResponseDTO(
-                entity.getUuid(),
-                entity.getRegion().getName(),
-                entity.getCounty().getName(),
-                entity.getArea().getName(),
-                entity.getCategory().getName(),
-                entity.getType().getName(),
-                entity.getDescription(),
-                entity.getPriceFrom(),
-                entity.getPriceTo(),
-                entity.getSquareMetersFrom(),
-                entity.getSquareMetersTo(),
-                entity.getUpdatedAt()
-        );
+                .map(propertyMapper::mapEntityToAdminResponseDTO);
     }
 }
