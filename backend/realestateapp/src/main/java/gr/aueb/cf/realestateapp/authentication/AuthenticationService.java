@@ -9,6 +9,7 @@ import gr.aueb.cf.realestateapp.repository.UserRepository;
 import gr.aueb.cf.realestateapp.security.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -22,15 +23,24 @@ public class AuthenticationService {
 
     public AuthenticationResponseDTO authenticate(AuthenticationRequestDTO dto)
             throws AppObjectNotAuthorizedException {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(dto.email(), dto.password())
-        );
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(dto.email(), dto.password())
+            );
 
-        UserEntity user = userRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new AppObjectNotAuthorizedException("User", "User not authorized"));
+            UserEntity user = userRepository.findByEmail(authentication.getName())
+                    .orElseThrow(() -> new AppObjectNotAuthorizedException("User", "User not authorized"));
 
-        String token = jwtService.generateToken(authentication.getName(), user.getRole().name());
-        return new AuthenticationResponseDTO(user.getName(), user.getSurname(), token);
+            if (!user.isActive()) {
+                throw new AppObjectNotAuthorizedException("User", "User account is deactivated");
+            }
+
+            String token = jwtService.generateToken(authentication.getName(), user.getRole().name());
+            return new AuthenticationResponseDTO(user.getName(), user.getSurname(), token); // The getSurname actually take the email
+        }
+        catch (BadCredentialsException e) {
+            throw new AppObjectNotAuthorizedException("User", "Invalid email or password");
+        }
     }
 
 }
