@@ -1,7 +1,6 @@
 package gr.aueb.cf.realestateapp.authentication;
 
 import gr.aueb.cf.realestateapp.core.exceptions.AppObjectNotAuthorizedException;
-import gr.aueb.cf.realestateapp.core.exceptions.AppObjectNotFoundException;
 import gr.aueb.cf.realestateapp.dto.AuthenticationRequestDTO;
 import gr.aueb.cf.realestateapp.dto.AuthenticationResponseDTO;
 import gr.aueb.cf.realestateapp.model.UserEntity;
